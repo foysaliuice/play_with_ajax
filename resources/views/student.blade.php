@@ -17,11 +17,17 @@
       <div class="row">
         <div class="col-md-12">
           <div class="col-md-6 col-md-offset-3">
-            <div class="form-group">
-              <input type="text" name="search" class="form-control" id="search_txt" placeholder="Search">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2>Play With ajax in Laravel project</h2>
+              </div>
+              <div class="panel-body">
+                <input type="text" name="search" class="form-control" id="search_txt" placeholder="Search">
+                <table class="table table-hover">
+                  <tbody></tbody>
+                </table>
+              </div>
             </div>
-
-            <div id="result"></div>
           </div>
         </div>
       </div>
@@ -33,23 +39,15 @@
     <script type="text/javascript">
       $(document).ready(function(){
         $("#search_txt").keyup(function() {
-          var txt = $(this).val();
-
-          if (txt !='') {
-
-          }else {
-            $("#result").html('');
-
-            $.ajax({
-              url: '/result',
-              method: 'post',
-              dataType: 'text',
-              data: {search: 'txt'},
-              success:function(data){
-                $("#result").html(data);
-              }
-            })
-          }
+          $txt = $(this).val();
+          $.ajax({
+            url: '{{ route('result') }}',
+            type: 'get',
+            data: {'search': $txt},
+            success:function(data){
+              $("tbody").html(data);
+            }
+          });
         });
       });
     </script>
