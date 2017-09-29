@@ -18,8 +18,10 @@
         <div class="col-md-12">
           <div class="col-md-6 col-md-offset-3">
             <div class="form-group">
-              <input type="text" name="search" class="form-control" id="search" placeholder="Search">
+              <input type="text" name="search" class="form-control" id="search_txt" placeholder="Search">
             </div>
+
+            <div id="result"></div>
           </div>
         </div>
       </div>
@@ -28,5 +30,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#search_txt").keyup(function() {
+          var txt = $(this).val();
+
+          if (txt !='') {
+
+          }else {
+            $("#result").html('');
+
+            $.ajax({
+              url: '/result',
+              method: 'post',
+              dataType: 'text',
+              data: {search: 'txt'},
+              success:function(data){
+                $("#result").html(data);
+              }
+            })
+          }
+        });
+      });
+    </script>
   </body>
 </html>
