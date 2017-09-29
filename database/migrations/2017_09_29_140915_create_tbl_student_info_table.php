@@ -15,6 +15,16 @@ class CreateTblStudentInfoTable extends Migration
     {
         Schema::create('tbl_student_info', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('std_name');
+            $table->string('std_fname');
+            $table->string('std_mname');
+            $table->string('std_email');
+            $table->string('std_phone');
+            $table->string('std_address');
+            $table->string('std_roll');
+            $table->string('std_session');
+            $table->string('std_result');
+            $table->string('std_position');
             $table->timestamps();
         });
     }
