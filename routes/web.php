@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'StudentController@index');
+Route::get('/result', 'StudentController@result')->name('result');
