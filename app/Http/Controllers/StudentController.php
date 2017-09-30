@@ -82,4 +82,20 @@ class StudentController extends Controller
       }
       return $output;
     }
+
+    public function empForm(){
+      return view('add');
+    }
+
+    public function store(request $request){
+      $name = $request->get('emp_name');
+      $salary = $request->get('emp_salary');
+
+      $data = array();
+      $data->emp_name=$name;
+      $data->emp_salary=$salary;
+
+      DB::table('tbl_emp')->insert($data);
+      echo "inserted";
+    }
 }
