@@ -13,3 +13,5 @@
 
 Route::get('/', 'StudentController@index');
 Route::get('/result', 'StudentController@result')->name('result');
+Route::get('/emp', 'StudentController@empForm')->name('emp');
+Route::get('/addEmp', 'StudentController@store')->name('addEmp');
